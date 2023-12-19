@@ -1,42 +1,58 @@
-int en = 9;
-int in1 = 7;
-int in2 = 8;
+// Motor A connections
+int ENA = 9; // L293D Enable Pin
+int IN1 = 8; // L293D IN1 Pin
+int IN2 = 7; // L293D IN2 Pin
 
-void setup() {
-  delay(2000);
-  Serial.begin(9600);
-  Serial.println("ArduinoBymyself - ROVERBot");
+void setup()
+{
+  pinMode(ENA, OUTPUT); // Set ENA as OUTPUT
+  pinMode(IN1, OUTPUT); // Set IN1 as OUTPUT
+  pinMode(IN2, OUTPUT); // Set IN2 as OUTPUT
 
-  // Set motor control pins as outputs
-  pinMode(in1, OUTPUT);
-  pinMode(in2, OUTPUT);
-
-  // Set PWM pin as an output
-  pinMode(en, OUTPUT);
+  digitalWrite(IN1, LOW); // Make the Arduino Pin 8 Low
+  digitalWrite(IN2, LOW); // Make the Arduino Pin 7 Low
 }
 
+
 void loop() {
-  // Set motor to rotate forward
-  digitalWrite(in1, HIGH);
-  digitalWrite(in2, LOW);
 
-  // Experiment with PWM on pin 9
-  analogWrite(en, 128);  // Set PWM duty cycle to 50% (0 to 255)
-  delay(2000);
+  // Rotate Motor Clockwise for 4 Seconds
+  analogWrite(ENA, 255); // Enable the L293D IC
+  digitalWrite(IN1, HIGH); // Make PIN 8 of the Arduino High
+  digitalWrite(IN2, LOW); // Make PIN 7 of the Arduino LOW
+  delay(4000); // wait for 4 Se
 
-  // Stop the motor for 1 second
-  analogWrite(en, 0);
+  // Rotate Motor counter-Clockwise for 4 Seconds
+  digitalWrite(IN1, LOW); // Make PIN 8 of the Arduino LOW
+  digitalWrite(IN2, HIGH);// Make PIN 7 of the Arduino HIGH
+  delay(4000);
+
+  // Stop Rotating the Motor
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
   delay(1000);
 
-  // Set motor to rotate backward
-  digitalWrite(in1, LOW);
-  digitalWrite(in2, HIGH);
+  // Turn on motors
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
 
-  // Experiment with PWM on pin 9
-  analogWrite(en, 200);  // Set PWM duty cycle to 78%
-  delay(2000);
 
-  // Stop the motor for 1 second
-  analogWrite(en, 0);
+  // Accelerate from minimum to maximum speed
+  for (int i = 0; i < 256; i++) {
+    analogWrite(ENA, i);
+    delay(20);
+  }
+
+
+   delay(2000);
+  // Decelerate from maximum speed to minimum
+  for (int i = 255; i >= 0; --i) {
+    analogWrite(ENA, i);
+    delay(20);
+  }
+
+  // Now turn off motors
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
   delay(1000);
 }
