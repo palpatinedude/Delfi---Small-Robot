@@ -1,7 +1,8 @@
 // Motor A connections (Left Motor)
 
-int IN1 = 8; // L293D IN1 Pin for Left Motor
+int IN1 = 4; // L293D IN1 Pin for Left Motor
 int IN2 = 7; // L293D IN2 Pin for Left Motor
+int ENB = 3;
 
 // Motor B connections (Right Motor)
 // int ENB = 10; // L293D Enable Pin for Right Motor

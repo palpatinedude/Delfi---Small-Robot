@@ -1,6 +1,6 @@
 // Motor A connections
-int ENA = 9; // L293D Enable Pin
-int IN1 = 8; // L293D IN1 Pin
+int ENA = 3; // L293D Enable Pin
+int IN1 = 4; // L293D IN1 Pin
 int IN2 = 7; // L293D IN2 Pin
 
 void setup()
