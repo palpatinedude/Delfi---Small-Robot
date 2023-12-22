@@ -25,23 +25,23 @@ char dataIn;
 
 // motors
 
-// motor A
-int enA = 3;
-int in1 = 4;
-int in2 = 7;
+// right motor
+#define enA 3
+int RightF = 4; // forward
+int RightB = 7; // backward
 
-// motor B
-int enB = 9;
-int in3 = 8;
-int in4 = 10;
+//  left  motor 
+#define enB 9
+int LeftF = 8; 
+int LeftB = 10;
 
 // functions
-void stopMotor();
-void turnRight(int speed);
-void turnLeft(int speed);
-void moveForward(int speed);
-void moveBackward(int speed); 
-void moveWithSpeed(int speed);
+void stopMotors();
+void turnRight();
+void turnLeft();
+void moveForward();
+void moveBackward(); 
+
 char check();
 
 void setup() {
@@ -69,13 +69,13 @@ void setup() {
 
   // initialize robot
   pinMode(enA, OUTPUT);
-  pinMode(in1, OUTPUT);
-  pinMode(in2, OUTPUT);
+  pinMode(RightF, OUTPUT);
+  pinMode(RightB, OUTPUT);
   pinMode(enB, OUTPUT);
-  pinMode(in3, OUTPUT);
-  pinMode(in4, OUTPUT);
+  pinMode(LeftF, OUTPUT);
+  pinMode(LeftB, OUTPUT);
   Serial.println(" Test Motors !");
-  stopMotor();
+  stopMotors();
   delay(2000);
 }
 
@@ -84,25 +84,24 @@ void loop(){
   switch(det){
       case 'F':
         Serial.println("Go forward");
-        moveForward(100);
-        det = check();
+        moveForward();
         break;
 
       case 'B':
         Serial.println("Go backward");
-        moveBackward(100);
+        moveBackward();
         det = check();
         break;
 
       case 'L':
         Serial.println("Turn left");
-        turnLeft(100);
+        turnLeft();
         det = check();
         break;
 
       case 'R':
         Serial.println("Turn right");
-        turnRight(100);
+        turnRight();
         det = check();
         break;
 
@@ -118,6 +117,7 @@ void loop(){
 
       case 'S':
         Serial.println("Stop");
+        stopMotors();
         det = check();
         break;
 
@@ -133,51 +133,50 @@ void loop(){
 }
 
 
-void moveForward(int speed) {
-  moveWithSpeed(speed);
-  digitalWrite(in1, LOW);  
-  digitalWrite(in2, HIGH); 
-  digitalWrite(in3, HIGH);  
-  digitalWrite(in4, LOW); 
+void moveForward() {
+  analogWrite(enA, 150);
+  analogWrite(enB, 150);
+  digitalWrite(RightF, LOW);
+  digitalWrite(RightB, HIGH);
+  digitalWrite(LeftF, HIGH);
+  digitalWrite(LeftB, LOW);
 }
 
-void moveBackward(int speed) {
-  moveWithSpeed(speed);
-  digitalWrite(in1, HIGH); 
-  digitalWrite(in2, LOW); 
-  digitalWrite(in3, LOW);  
-  digitalWrite(in4, HIGH); 
+void moveBackward() {
+  analogWrite(enA, 150);
+  analogWrite(enB, 150);
+  digitalWrite(RightF, HIGH);
+  digitalWrite(RightB, LOW);
+  digitalWrite(LeftF, LOW);
+  digitalWrite(LeftB, HIGH);
 }
 
-void turnLeft(int speed) {
-  moveWithSpeed(speed); 
-  digitalWrite(in1, LOW);
-  digitalWrite(in2, HIGH);
-  digitalWrite(in3, HIGH);
-  digitalWrite(in4, LOW);
- 
+void turnLeft() {
+  analogWrite(enA, 150);
+  analogWrite(enB, 150);
+  digitalWrite(RightF, LOW);
+  digitalWrite(RightB, HIGH);
+  digitalWrite(LeftF, HIGH);
+  digitalWrite(LeftB, LOW);
 }
 
-void turnRight(int speed) {
-  digitalWrite(in1, HIGH);
-  digitalWrite(in2, LOW);
-  digitalWrite(in3, LOW);
-  digitalWrite(in4, HIGH);
-  moveWithSpeed(speed); 
+void turnRight() {
+  analogWrite(enA, 150);
+  analogWrite(enB, 150);
+  digitalWrite(RightF, HIGH);
+  digitalWrite(RightB, LOW);
+  digitalWrite(LeftF, LOW);
+  digitalWrite(LeftB, HIGH);
 }
-void stopMotor() {
-  digitalWrite(in1, LOW);
-  digitalWrite(in2, LOW);
-  digitalWrite(in3, LOW);
-  digitalWrite(in4, LOW);
+
+void stopMotors() {
   analogWrite(enA, 0);
+  analogWrite(enB, 0);
+  digitalWrite(RightF, LOW);
+  digitalWrite(RightB, LOW);
+  digitalWrite(LeftF, LOW);
+  digitalWrite(LeftB, LOW);
 }
-
-void moveWithSpeed(int speed) {
-  analogWrite(enA, speed);
-  analogWrite(enB, speed);
-}
-
 char check(){
   if (BT.available() > 0){// if there is valid data in the serial port
   dataIn = BT.read();// stores data into a varialbe
@@ -195,50 +194,39 @@ char check(){
     else if (dataIn == 'R'){//Right
       choice = 'R';
     }
-    else if (dataIn == 'I'){//Froward Right
-      choice = 'I';
-    }
-    else if (dataIn == 'J'){//Backward Right
-      choice = 'J';
-    }
-    else if (dataIn == 'G'){//Forward Left
-      choice = 'G';
-    }    
-    else if (dataIn == 'H'){//Backward Left
-      choice = 'H';
-    }
+
     else if (dataIn == 'S'){//Stop
       choice = 'S';
     }
     /*
-    else if (dataIn == '0'){//Speed 0
+    else if (dataIn == '0'){//150 0
       vel = 0;
     }
-    else if (dataIn == '1'){//Speed 25
+    else if (dataIn == '1'){//150 25
       vel = 25;
     }
-    else if (dataIn == '2'){//Speed 50
+    else if (dataIn == '2'){//150 50
       vel = 50;
     }
-    else if (dataIn == '3'){//Speed 75
+    else if (dataIn == '3'){//150 75
       vel = 75;
     }
-    else if (dataIn == '4'){//Speed 100
+    else if (dataIn == '4'){//150 100
       vel = 100;
     }
-    else if (dataIn == '5'){//Speed 125
+    else if (dataIn == '5'){//150 125
       vel = 125;
     }
-    else if (dataIn == '6'){//Speed 150
+    else if (dataIn == '6'){//150 150
       vel = 150;
     }
-    else if (dataIn == '7'){//Speed 175
+    else if (dataIn == '7'){//150 175
       vel = 175;
     }
-    else if (dataIn == '8'){//Speed 200
+    else if (dataIn == '8'){//150 200
       vel = 200;
     }
-    else if (dataIn == '9'){//Speed 225
+    else if (dataIn == '9'){//150 225
       vel = 225;
     }   
     else if (dataIn == 'b'){//Extra On
