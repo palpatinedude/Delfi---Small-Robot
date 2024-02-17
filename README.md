@@ -14,7 +14,8 @@ Modes of Operation:
     Turn Robot ON (X): Activate the robot.
     Turn Robot OFF (x): Deactivate the robot.
     
-    ![platform](https://github.com/palpatinedude/Delfi---Small-Robot/assets/117318107/d6995aa2-a036-4a74-a390-ac7acd6c49b7)
+![platform](https://github.com/palpatinedude/Delfi---Small-Robot/assets/117318107/6171ee28-050c-4913-8600-de4a61c1eca7)
+
 
 Components:
 
