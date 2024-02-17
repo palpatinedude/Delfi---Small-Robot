@@ -1,6 +1,6 @@
 Description
 
-The Mobile Robot Car is a versatile project designed to demonstrate various functionalities of a robotic system. It is built using common electronic components and can perform tasks such as wall following, obstacle avoidance, and free movement.The project entails programming a robot car equipped with ultrasonic sensors for obstacle detection, a servo motor for navigation, and Bluetooth communication for remote control. The robot is capable of various movements including forward, backward, left, and right turns, as well as entering obstacle avoidance or wall-following modes.
+The Mobile Robot Car is a versatile project designed to demonstrate various functionalities of a robotic system. It is built using common electronic components and can perform tasks such as wall following, obstacle avoidance, and free movement.The project entails programming a robot car equipped with ultrasonic sensors for obstacle detection, a servo motor for navigation, and Bluetooth communication for remote control. The robot is capable of various movements including forward, backward, left, and right turns, as well as entering obstacle avoidance or wall-following modes.I use the Bluetooth Electronics app for controlling  the robot car.
 
 Modes of Operation:
 
@@ -28,6 +28,7 @@ Components:
     Castor Wheel
     2 x Wheels
     Tupper Box (Chassis)
+    4 x AA batteries
 
     
 
