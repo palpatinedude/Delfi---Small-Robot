@@ -11,10 +11,11 @@ Modes of Operation:
     Stop (S): Stop the robot(red).
     Avoidance Mode (A): Implement obstacle avoidance mode(green).
     Wall Following Mode (W): Follow a wall based on sensor feedback(blue).
-    Turn Robot ON (X): Activate the robot.
-    Turn Robot OFF (x): Deactivate the robot.
+    Turn Robot ON (ON): Activate the robot.
+    Turn Robot OFF (OFF): Deactivate the robot.
     
-![platform](https://github.com/palpatinedude/Delfi---Small-Robot/assets/117318107/6171ee28-050c-4913-8600-de4a61c1eca7)
+
+![2fd481b9-887e-4f28-8530-e496e2ad3cac](https://github.com/palpatinedude/Delfi---Small-Robot/assets/117318107/59d41e22-7f2c-4cca-81d9-e8a77e3253e6)
 
 
 Components:
