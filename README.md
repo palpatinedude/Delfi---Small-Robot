@@ -35,6 +35,10 @@ Components:
 Hardware Architecture:
 ![system](https://github.com/palpatinedude/Delfi---Small-Robot/assets/117318107/3f96b5bd-3b04-4764-ba1b-b04220e868c4)
 
+System Architecture:
+
+![wholesystemdiagram](https://github.com/palpatinedude/Delfi---Small-Robot/assets/117318107/b5ab3269-bc6a-4af0-ad63-ab4d2f3a762d)
+
 
 Wall Following Mode:
 
@@ -68,9 +72,11 @@ Operation:
 Implementation:
 
     Distance Measurement: Ultrasonic sensors are used to measure the distance to obstacles in front of the robot.
-    Decision Making: The robot's control algorithm determines the appropriate action to take based on the proximity and size of the detected obstacle.
+    Decision Making: The robot's control algorithm determines the appropriate action to take based on the maximun distance in order to continuously avoid obstacles.
     Dynamic Navigation: The robot dynamically adjusts its path to avoid obstacles in real-time, ensuring safe and efficient navigation.
 
+Photos:
+![404160182_219714681195749_3811149012263920410_n](https://github.com/palpatinedude/Delfi---Small-Robot/assets/117318107/2b3df04a-5a43-415b-8a9d-c0c6f8675aee)
 
 
 
