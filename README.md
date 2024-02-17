@@ -8,9 +8,9 @@ Modes of Operation:
     Backward (B): Move the robot backward.
     Left (L): Turn the robot left.
     Right (R): Turn the robot right.
-    Stop (S): Stop the robot.
-    Avoidance Mode (A): Implement obstacle avoidance mode.
-    Wall Following Mode (W): Follow a wall based on sensor feedback.
+    Stop (S): Stop the robot(red).
+    Avoidance Mode (A): Implement obstacle avoidance mode(green).
+    Wall Following Mode (W): Follow a wall based on sensor feedback(blue).
     Turn Robot ON (X): Activate the robot.
     Turn Robot OFF (x): Deactivate the robot.
     
@@ -29,7 +29,9 @@ Components:
     2 x Wheels
     Tupper Box (Chassis)
 
-    
+Hardware Architecture:
+![system](https://github.com/palpatinedude/Delfi---Small-Robot/assets/117318107/3f96b5bd-3b04-4764-ba1b-b04220e868c4)
+
 
 Wall Following Mode:
 
